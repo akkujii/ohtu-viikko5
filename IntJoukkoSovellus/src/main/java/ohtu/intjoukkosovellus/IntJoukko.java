@@ -55,15 +55,12 @@ public class IntJoukko {
     }
 
     public boolean lisaa(int luku) {
-
-        int eiOle = 0;
         if (alkioidenLkm == 0) {
             tbl[0] = luku;
             alkioidenLkm++;
             return true;
         } else {
-        }
-        if (!kuuluu(luku)) {
+            if (!alreadyExists(luku)) {
             tbl[alkioidenLkm] = luku;
             alkioidenLkm++;
             if (alkioidenLkm % tbl.length == 0) {
@@ -75,10 +72,12 @@ public class IntJoukko {
             }
             return true;
         }
+        }
+        
         return false;
     }
 
-    public boolean kuuluu(int luku) {
+    public boolean alreadyExists(int luku) {
         int on = 0;
         for (int i : tbl) {
             if (luku == i) {
