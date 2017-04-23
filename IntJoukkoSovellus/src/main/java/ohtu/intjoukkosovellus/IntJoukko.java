@@ -86,19 +86,23 @@ public class IntJoukko {
         }
         return false;
     }
-
-    public boolean poista(int luku) {
-        int kohta = -1;
-        int apu;
+    
+    public int find(int luku) {
+        int index = -1;
         for (int i = 0; i < alkioidenLkm; i++) {
-            if (luku == tbl[i]) {
-                kohta = i; //siis luku löytyy tuosta kohdasta :D
-                tbl[kohta] = 0;
-                break;
+            if(tbl[i] == luku) {
+                tbl[i] = 0;
+                return i;
             }
         }
-        if (kohta != -1) {
-            for (int j = kohta; j < alkioidenLkm - 1; j++) {
+        return index;
+    }
+
+    public boolean poista(int luku) {
+        int apu;
+        int indx = find(luku);
+        if (indx != -1) {
+            for (int j = indx; j < alkioidenLkm - 1; j++) {
                 apu = tbl[j];
                 tbl[j] = tbl[j + 1];
                 tbl[j + 1] = apu;
