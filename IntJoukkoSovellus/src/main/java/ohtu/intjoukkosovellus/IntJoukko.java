@@ -64,17 +64,19 @@ public class IntJoukko {
             tbl[alkioidenLkm] = luku;
             alkioidenLkm++;
             if (alkioidenLkm % tbl.length == 0) {
-                int[] taulukkoOld = new int[tbl.length];
-                taulukkoOld = tbl;
-                kopioiTaulukko(tbl, taulukkoOld);
-                tbl = new int[alkioidenLkm + incr];
-                kopioiTaulukko(taulukkoOld, tbl);
+                kasvataTaulukkoa();                
             }
-            return true;
+                return true;
+            }
         }
-        }
-        
-        return false;
+    }
+    
+    public void kasvataTaulukkoa() {
+        int[] taulukkoOld = new int[tbl.length];
+        taulukkoOld = tbl;
+        kopioiTaulukko(tbl, taulukkoOld);
+        tbl = new int[alkioidenLkm + incr];
+        kopioiTaulukko(taulukkoOld, tbl);        
     }
 
     public boolean alreadyExists(int luku) {
@@ -110,8 +112,6 @@ public class IntJoukko {
             alkioidenLkm--;
             return true;
         }
-
-
         return false;
     }
 
